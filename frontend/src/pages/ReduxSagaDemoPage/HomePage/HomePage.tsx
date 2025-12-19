@@ -1,3 +1,4 @@
+import { LoadingFallback } from "@shared/ui";
 import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import {
@@ -8,7 +9,6 @@ import {
 	selectNewsFeedLoadingStatus,
 	selectNewsFeedPosts,
 } from "@/features/NewsFeed";
-import { LoadingFallback } from "@/shared/ui";
 import styles from "./HomePage.module.scss";
 
 /**
@@ -34,6 +34,10 @@ export default function HomePage() {
 
 				{!isLoading && posts.length > 0 && (
 					<PostsList posts={posts} hasMore={hasMore} />
+				)}
+
+				{!isLoading && posts.length === 0 && (
+					<p className={styles.text}>Новые новости отсутствуют</p>
 				)}
 			</div>
 		</div>

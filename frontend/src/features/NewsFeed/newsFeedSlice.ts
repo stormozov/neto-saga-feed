@@ -87,8 +87,7 @@ const newsFeedSlice = createSlice({
     /**
      * Действие: ошибка при загрузке новостей.
      *
-     * Сохраняет сообщение об ошибке, устанавливает `isLoading` в `false`
-     * и отключает индикатор начальной загрузки.
+     * Сохраняет сообщение об ошибке в поле `error`.
      *
      * @param state - Текущее состояние ленты новостей.
      * @param action - Действие с полезной нагрузкой типа `string` — сообщением 
@@ -96,8 +95,6 @@ const newsFeedSlice = createSlice({
      */
     fetchNewsFailed: (state, action: FetchNewsFailedAction) => {
       state.error = action.payload;
-      state.isLoading = false;
-      state.isInitialLoading = false;
     },
   },
 });
