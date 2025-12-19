@@ -37,6 +37,9 @@ function* fetchNewsSaga(action: FetchNewsAction) {
 			const url = lastSeenId ? `${URL}?lastSeenId=${lastSeenId}` : URL;
 
 			const response: Response = yield call(fetch, url);
+
+			if (!response.ok) throw new Error(response.statusText);
+
 			const posts: VKPostsType = yield response.json();
 
 			yield put(fetchNewsSuccess({ posts, isInitial }));
