@@ -3,7 +3,7 @@ import {
 	useDispatch,
 	useSelector,
 } from "react-redux";
-import type { AppDispatch, RootState } from "./store";
+import type { AppDispatch, RootState } from "./types";
 
 /** Типизированный хук для доступа к диспатчу. */
 export const useAppDispatch = () => useDispatch<AppDispatch>();
