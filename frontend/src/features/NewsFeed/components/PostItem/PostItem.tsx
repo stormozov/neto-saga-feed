@@ -1,4 +1,5 @@
 import { Button } from "@shared/ui";
+import { formatUnixTime, formatViews } from "@shared/utils";
 import classNames from "classnames";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
@@ -26,9 +27,9 @@ interface IPostItemProps {
 	 *   from_id: -30159897,
 	 *   text: "До запуска Education show осталось две недели. Уже 27 августа ...",
 	 *   date: 1565887673,
-	 * 
+	 *
 	 * 	 ... другие поля
-	 * 
+	 *
 	 *   likes: { count: 5 },
 	 *   comments: { count: 2 },
 	 *   views: { count: 42 }
@@ -40,8 +41,8 @@ interface IPostItemProps {
 /**
  * Компонент отдельного поста в ленте.
  *
- * Отображает информацию о посте: автора, дату, текст, количество лайков, 
- * комментариев, просмотров и кнопки взаимодействия. Используется внутри 
+ * Отображает информацию о посте: автора, дату, текст, количество лайков,
+ * комментариев, просмотров и кнопки взаимодействия. Используется внутри
  * {@link PostsList} для рендеринга каждого элемента списка постов.
  *
  * @example
@@ -59,7 +60,9 @@ export default function PostItem({ data }: IPostItemProps) {
 				</div>
 				<div className={styles["post-item__header-wrapper"]}>
 					<h4 className={styles["post-item__author"]}>Автор поста</h4>
-					<time className={styles["post-item__date"]}>{data.date}</time>
+					<time className={styles["post-item__date"]}>
+						{formatUnixTime(data.date)}
+					</time>
 				</div>
 			</header>
 
@@ -140,7 +143,7 @@ export default function PostItem({ data }: IPostItemProps) {
 				>
 					<IoEye />
 					<span className={styles["post-item__views-count"]}>
-						{data.views.count}
+						{formatViews(data.views.count)}
 					</span>
 				</div>
 			</footer>
