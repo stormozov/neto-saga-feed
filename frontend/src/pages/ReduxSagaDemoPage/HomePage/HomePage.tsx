@@ -1,8 +1,11 @@
 import { LoadingFallback } from "@shared/ui";
-import { useEffect } from "react";
+import { getLastItemId } from "@shared/utils";
+import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import {
 	fetchInitNewsRequested,
+	fetchMoreNewsRequested,
+	LoadMoreBtn,
 	PostsList,
 	selectNewsFeedHasMore,
 	selectNewsFeedIsInitialLoading,
@@ -25,18 +28,31 @@ export default function HomePage() {
 		if (isInitialLoading) dispatch(fetchInitNewsRequested());
 	}, [dispatch, isInitialLoading]);
 
+	const handleLoadMore = useCallback(() => {
+		if (posts.length > 0 && hasMore && !isLoading) {
+			const lastPostId = getLastItemId(posts);
+			if (!lastPostId) return;
+			dispatch(fetchMoreNewsRequested(lastPostId));
+		}
+	}, [dispatch, posts, hasMore, isLoading]);
+
 	return (
 		<div className={styles.homepage}>
 			<div className={styles.container}>
 				<h1 className={styles.title}>Лента новостей</h1>
 
-				{isLoading && <LoadingFallback />}
+				{isInitialLoading && <LoadingFallback />}
 
-				{!isLoading && posts.length > 0 && (
-					<PostsList posts={posts} hasMore={hasMore} />
+				{!isInitialLoading && posts.length > 0 && (
+					<>
+						<PostsList posts={posts} />
+						{hasMore && (
+							<LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
+						)}
+					</>
 				)}
 
-				{!isLoading && posts.length === 0 && (
+				{!isInitialLoading && posts.length === 0 && (
 					<p className={styles.text}>Новые новости отсутствуют</p>
 				)}
 			</div>
