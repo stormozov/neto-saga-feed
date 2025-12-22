@@ -1,0 +1,106 @@
+.posts-list-skeleton {
+  display: grid;
+  gap: 1em;
+}
+
+.post-item-skeleton {
+  @keyframes skeleton-shimmer {
+    0% {
+      background-position: -400px 0;
+    }
+    100% {
+      background-position: 400px 0;
+    }
+  }
+
+  display: grid;
+  gap: 1em;
+
+  padding: 1em;
+
+  background-color: var(--block-bg-primary);
+  border-radius: var(--border-radius-main);
+
+  font-size: 1rem;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  &__header-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  &__content {
+    display: grid;
+    gap: 0.3em;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 1em;
+    border-top: 1px solid #424242;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+  }
+
+  // Общий элемент всех скелетонов
+  &__element {
+    background-color: #484848;
+    background-image: linear-gradient(
+      90deg,
+      #484848 0%,
+      #575757 50%,
+      #484848 100%
+    );
+    background-size: 400px 100%;
+  
+    animation: skeleton-shimmer 2.5s infinite ease-in-out;
+  }
+
+  // Круги
+  &__circle {
+    border-radius: 50%;
+  }
+
+  &__circle-sm {
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  &__circle-md {
+    width: 3em;
+    height: 3em;
+  }
+
+  // Линии
+  &__line {
+    border-radius: 2px;
+  }
+
+  &__line-sm {
+    width: 60px;
+    height: 0.8em;
+  }
+
+  &__line-md {
+    width: 90px;
+    height: 1em;
+  }
+
+  &__line-full {
+    width: 100%;
+    height: 1em;
+  }
+}

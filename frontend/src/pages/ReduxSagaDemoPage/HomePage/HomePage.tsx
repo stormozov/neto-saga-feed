@@ -1,4 +1,3 @@
-import { LoadingFallback } from "@shared/ui";
 import { getLastItemId } from "@shared/utils";
 import { useCallback, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
@@ -6,6 +5,7 @@ import {
 	fetchInitNewsRequested,
 	fetchMoreNewsRequested,
 	LoadMoreBtn,
+	PostItemSkeleton,
 	PostsList,
 	selectNewsFeedHasMore,
 	selectNewsFeedIsInitialLoading,
@@ -41,7 +41,7 @@ export default function HomePage() {
 			<div className={styles.container}>
 				<h1 className={styles.title}>Лента новостей</h1>
 
-				{isInitialLoading && <LoadingFallback />}
+				{isInitialLoading && <PostItemSkeleton count={3} />}
 
 				{!isInitialLoading && posts.length > 0 && (
 					<>
