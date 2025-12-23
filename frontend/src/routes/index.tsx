@@ -16,14 +16,19 @@ export default function createAppRouter() {
 	const HomepageWithSuspense = withSuspense(Homepage);
 	const NotFoundWithSuspense = withSuspense(NotFound);
 
-	return createBrowserRouter([
-		{
-			path: "/",
-			element: <LayoutWithSuspense />,
-			children: [
-				{ index: true, element: <HomepageWithSuspense /> },
-				{ path: "*", element: <NotFoundWithSuspense /> },
-			],
-		},
-	]);
+	const basename: string = import.meta.env.VITE_BASENAME || "/";
+
+	return createBrowserRouter(
+		[
+      {
+        path: "/",
+        element: <LayoutWithSuspense />,
+        children: [
+          { index: true, element: <HomepageWithSuspense /> },
+          { path: "*", element: <NotFoundWithSuspense /> },
+        ],
+      },
+    ],
+    { basename }
+	);
 }

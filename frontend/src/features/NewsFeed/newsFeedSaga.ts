@@ -8,7 +8,7 @@ import {
 import type { VKPostsType } from "./types/postTypes";
 import type { FetchNewsAction } from "./types/reduxTypes";
 
-const URL = "http://localhost:7070/api/news";
+const URL: string = import.meta.env.VITE_API_BASE_URL;
 
 /**
  * Сага для загрузки новостей с сервера с поддержкой пагинации.
