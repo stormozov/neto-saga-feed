@@ -59,7 +59,9 @@ API предоставляет доступ к пагинированным да
 * [TypeScript (TS)](https://www.typescriptlang.org/)
 * [Redux Toolkit (RTK)](https://redux-toolkit.js.org/)
 * [Redux Saga (RS)](https://redux-saga.js.org/)
-* [Axios](https://axios-http.com/ru/)
+* [React Router](https://reactrouter.com/home)
+* [Linkify React](https://www.npmjs.com/package/linkify-react)
+* [Express](https://expressjs.com/)
 
 ## Реализация
 
