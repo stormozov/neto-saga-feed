@@ -1,6 +1,7 @@
 import { Button } from "@shared/ui";
 import { formatUnixTime, formatViews } from "@shared/utils";
 import classNames from "classnames";
+import Linkify from "linkify-react";
 import { FaRegCommentAlt } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
@@ -51,6 +52,13 @@ interface IPostItemProps {
  * <PostItem data={post} />
  */
 export default function PostItem({ data }: IPostItemProps) {
+	const linkifyOptions = {
+		attributes: {
+			target: "_blank",
+			rel: "noopener noreferrer",
+		},
+	};
+
 	const likesCount = data.likes.count > 0 ? data.likes.count : "";
 	const commentsCount = data.comments.count > 0 ? data.comments.count : "";
 	const attachments = data.attachments;
@@ -92,7 +100,9 @@ export default function PostItem({ data }: IPostItemProps) {
 			</header>
 
 			<div className={styles["post-item__content"]}>
-				<p className={styles["post-item__text"]}>{data.text}</p>
+				<p className={styles["post-item__text"]}>
+					<Linkify options={linkifyOptions}>{data.text}</Linkify>
+				</p>
 				{attachments && attachments.length > 0 && (
 					<div className={styles["post-item__attachments"]}>
 						{attachments.map((attachment) => (
