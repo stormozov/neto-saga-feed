@@ -46,7 +46,7 @@
     justify-content: space-between;
 
     padding-top: 1em;
-    border-top: 1px solid #424242;
+    border-top: 1px solid var(--divider-color);
   }
 
   &__actions {

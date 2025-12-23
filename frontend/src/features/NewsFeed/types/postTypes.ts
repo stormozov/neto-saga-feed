@@ -307,7 +307,7 @@ export interface ILinkAttachment {
  *
  * Позволяет строго типизировать различные виды медиа-вложений.
  */
-type AttachmentType =
+export type AttachmentType =
 	| { type: "video"; video: IVideoAttachment }
 	| { type: "photo"; photo: IPhotoAttachment }
 	| { type: "link"; link: ILinkAttachment };

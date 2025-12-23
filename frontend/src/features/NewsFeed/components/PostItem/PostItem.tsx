@@ -5,8 +5,10 @@ import { FaRegCommentAlt } from "react-icons/fa";
 import { IoEye } from "react-icons/io5";
 import { MdFavoriteBorder } from "react-icons/md";
 import { TbShare3 } from "react-icons/tb";
-import type { IVKPost } from "../../types/postTypes";
+import type { AttachmentType, IVKPost } from "@/features/NewsFeed";
 import styles from "./PostItem.module.scss";
+import { PostLinkAttachment } from "./PostLinkAttachment";
+import { PostPhotoAttachment } from "./PostPhotoAttachment";
 
 /**
  * Интерфейс, описывающий свойства компонента {@link PostItem}.
@@ -51,12 +53,35 @@ interface IPostItemProps {
 export default function PostItem({ data }: IPostItemProps) {
 	const likesCount = data.likes.count > 0 ? data.likes.count : "";
 	const commentsCount = data.comments.count > 0 ? data.comments.count : "";
+	const attachments = data.attachments;
+
+	const avatars = [
+		"./img/avatars/avatar-1.jpeg",
+		"./img/avatars/avatar-2.jpeg",
+		"./img/avatars/avatar-3.jpeg",
+	];
+
+	const getStableAvatar = (postId: number): string => {
+		const index = Math.abs(postId) % avatars.length;
+		return avatars[index];
+	};
+
+	const renderAttachment = (data: AttachmentType) => {
+		switch (data.type) {
+			case "link":
+				return <PostLinkAttachment data={data.link} />;
+			case "photo":
+				return <PostPhotoAttachment data={data.photo} />;
+			default:
+				return null;
+		}
+	};
 
 	return (
 		<li className={styles["post-item"]}>
 			<header className={styles["post-item__header"]}>
 				<div className={styles["post-item__avatar"]}>
-					<img src="./avatar.jpeg" alt="Аватар пользователя" />
+					<img src={getStableAvatar(data.id)} alt="Аватар пользователя" />
 				</div>
 				<div className={styles["post-item__header-wrapper"]}>
 					<h4 className={styles["post-item__author"]}>Автор поста</h4>
@@ -68,6 +93,18 @@ export default function PostItem({ data }: IPostItemProps) {
 
 			<div className={styles["post-item__content"]}>
 				<p className={styles["post-item__text"]}>{data.text}</p>
+				{attachments && attachments.length > 0 && (
+					<div className={styles["post-item__attachments"]}>
+						{attachments.map((attachment) => (
+							<div
+								key={attachment.type}
+								className={styles["post-item__attachment-item"]}
+							>
+								{renderAttachment(attachment)}
+							</div>
+						))}
+					</div>
+				)}
 			</div>
 
 			<footer className={styles["post-item__footer"]}>

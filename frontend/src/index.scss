@@ -3,6 +3,10 @@
 
   --border-radius-main: 4px;
 
+  --text-primary: #ffffff;
+  --text-secondary: #8a8a8a;
+  --text-hover: #0077FF;
+
   --bg-color-primary: #242424;
   --block-bg-primary: #2c2c2c;
 
@@ -12,10 +16,10 @@
   --button-secondary-hover: #535353;
   --button-color-tertiary: #ffffff;
 
+  --divider-color: #424242;
+
   --danger-color: #ff4d4d;
   --danger-color-hover: #e04242;
-  --success-color: #4d9f4d;
-  --success-color-hover: #3d883d;
 }
 
 :root {
@@ -25,7 +29,7 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-  color: #ffffff;
+  color: var(--text-primary);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

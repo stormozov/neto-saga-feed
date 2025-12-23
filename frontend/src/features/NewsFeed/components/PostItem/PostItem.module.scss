@@ -26,13 +26,28 @@
     }
   }
 
+  &__author {
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      color: var(--text-hover);
+    }
+  }
+
   &__date {
     font-size: 0.8em;
-    color: #8a8a8a;
+    color: var(--text-secondary);
   }
 
   &__content {
     overflow: hidden;
+  }
+
+  &__attachments {
+    display: grid;
+    gap: 1em;
+    margin-top: 1em;
   }
 
   &__text {
@@ -47,7 +62,7 @@
     justify-content: space-between;
 
     padding-top: 1em;
-    border-top: 1px solid #424242;
+    border-top: 1px solid var(--divider-color);
   }
 
   &__actions {
@@ -61,7 +76,7 @@
     align-items: center;
     gap: 0.3em;
 
-    color: #8a8a8a;
+    color: var(--text-secondary);
   }
 
   &__count {

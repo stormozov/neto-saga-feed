@@ -1,0 +1,47 @@
+.post-link-attachment {
+  &__img-wrapper {
+    width: 100%;
+    height: 280px;
+    border-radius: var(--border-radius-main);
+    overflow: hidden;
+  }
+
+  &__img,
+  &__title {
+    transition: all 0.3s ease;
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+
+  &__info {
+    padding-bottom: 0.2rem;
+    padding-left: 0.8rem;
+    margin-top: 0.8rem;
+
+    border-left: 1px solid var(--divider-color);
+  }
+
+  &__caption {
+    font-size: 0.8em;
+    color: var(--text-secondary);
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .post-link-attachment__img {
+      transform: scale(1.1);
+    }
+
+    .post-link-attachment__title {
+      color: var(--text-hover);
+    }
+  }
+}

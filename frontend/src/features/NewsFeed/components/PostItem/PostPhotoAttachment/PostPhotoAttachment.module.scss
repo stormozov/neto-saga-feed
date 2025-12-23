@@ -1,0 +1,24 @@
+.post-photo-attachment {
+  &__img-wrapper {
+    width: 100%;
+    height: 550px;
+    border-radius: var(--border-radius-main);
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      height: 400px;
+    }
+    @media (max-width: 500px) {
+      height: 200px;
+    }
+  }
+
+  &__img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+  }
+}
