@@ -1,0 +1,34 @@
+.scroll-to-top-button {
+  $Btn-h-v-position: 1.25rem;
+  $transition-duration: 0.3s;
+  $transition-timing: ease-in-out;
+
+  position: fixed;
+  bottom: $Btn-h-v-position;
+  right: $Btn-h-v-position;
+  z-index: 1000;
+
+  opacity: 0;
+  transform: translateY(10rem);
+  visibility: hidden;
+  transition: opacity $transition-duration $transition-timing,
+    visibility $transition-duration $transition-timing;
+
+  outline: 3px solid var(--bg-color-primary);
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  svg {
+    transition: transform $transition-duration $transition-timing;
+  }
+
+  &:hover {
+    svg {
+      transform: translateY(-3px);
+    }
+  }
+}

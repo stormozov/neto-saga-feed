@@ -1,5 +1,6 @@
 import { getLastItemId } from "@shared/utils";
 import { useCallback, useEffect } from "react";
+import { FaEye } from "react-icons/fa";
 import { useAppDispatch, useAppSelector } from "@/app/hooks";
 import {
 	fetchInitNewsRequested,
@@ -46,14 +47,21 @@ export default function HomePage() {
 				{!isInitialLoading && posts.length > 0 && (
 					<>
 						<PostsList posts={posts} />
-						{hasMore && (
+						{hasMore ? (
 							<LoadMoreBtn onClick={handleLoadMore} isLoading={isLoading} />
+						) : (
+							<p className={styles["end-feed-message"]}>
+								<FaEye />
+								Вы просмотрели все новости
+							</p>
 						)}
 					</>
 				)}
 
 				{!isInitialLoading && posts.length === 0 && (
-					<p className={styles.text}>Новые новости отсутствуют</p>
+					<p className={styles["empty-state-message"]}>
+						Новые новости отсутствуют
+					</p>
 				)}
 			</div>
 		</div>

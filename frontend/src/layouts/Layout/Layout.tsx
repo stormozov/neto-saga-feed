@@ -1,3 +1,4 @@
+import { ScrollToTopButton } from "@shared/ui";
 import { Footer } from "../Footer";
 import { Header } from "../Header";
 import { Main } from "../Main";
@@ -16,6 +17,7 @@ export default function Layout() {
 			<Header />
 			<Main />
 			<Footer />
+			<ScrollToTopButton />
 		</div>
 	);
 }
